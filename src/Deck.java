@@ -20,7 +20,7 @@ public class Deck {
 	 */
 	private int size;
 
-	private static ArrayList<Card> deck = new ArrayList<Card>();
+	private ArrayList<Card> deck = new ArrayList<Card>();
 
 
 	/**
@@ -85,9 +85,8 @@ public class Deck {
 	 */
 	public Card deal() {
 		if (size != 0) {
-			Card card = deck.get(size -1);
 			size--;
-			return card;
+			return deck.get(size);
 		}
 		return null;
 	}

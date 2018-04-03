@@ -8,21 +8,18 @@ public class DeckTester {
 	 *	@param args is not used.
 	 */
 	public static void main(String[] args) {
-		// String[] ranks = {"ace", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "hearts"};
-		// String[] suits = {"hearts", "diamonds", "spades", "clubs"};
-		// int[] values = {};
-		String[] ranks = {"A", "B", "C"};
-		String[] suits = {"Giraffes", "Lions"};
-		int[] values = {2, 1, 6};
-		Deck deck = new Deck(ranks, suits, values);
-		System.out.println(deck.size());
-		System.out.println(deck.deal());
-		System.out.println(deck.deal());
-		System.out.println(deck.deal());
-		System.out.println(deck.deal());
-		System.out.println(deck.deal());
-		System.out.println(deck.deal());
-		System.out.println(deck.size());
-		System.out.println(deck.deal());
+		
+		String[] ranks1 = {"A", "B", "C"};
+		String[] suits1 = {"Giraffes", "Lions"};
+		int[] values1 = {2, 1, 6};
+
+		String[] ranks2 = {"ace", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king"};
+		String[] suits2 = {"hearts", "diamonds", "spades", "clubs"};
+		int[] values2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+		
+		Deck deck1 = new Deck(ranks1, suits1, values1);
+		Deck deck2 = new Deck(ranks2, suits2, values2);
+		System.out.println(deck2.size());
+		System.out.println(deck2.deal());
 	}
 }
