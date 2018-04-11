@@ -1,6 +1,7 @@
 /**
  * This class provides a convenient way to test shuffling methods.
  */
+import java.util.Random;
 public class Shuffler {
 
 	/**
@@ -17,7 +18,7 @@ public class Shuffler {
 	public static void main(String[] args) {
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive perfect shuffles:");
-		int[] values1 = {0, 1, 2, 3};
+		int[] values1 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			perfectShuffle(values1);
 			System.out.print("  " + j + ":");
@@ -30,7 +31,7 @@ public class Shuffler {
 
 		System.out.println("Results of " + SHUFFLE_COUNT +
 								 " consecutive efficient selection shuffles:");
-		int[] values2 = {0, 1, 2, 3};
+		int[] values2 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 		for (int j = 1; j <= SHUFFLE_COUNT; j++) {
 			selectionShuffle(values2);
 			System.out.print("  " + j + ":");
@@ -39,7 +40,13 @@ public class Shuffler {
 			}
 			System.out.println();
 		}
-		System.out.println();
+		// System.out.println();
+		int[] array1 = {1, 2, 3, 4};
+		int[] array2 = {3, 1, 2, 4};
+
+		System.out.println(arePermutations(array1, array2));
+		//System.out.println(flip());
+
 	}
 
 
@@ -50,7 +57,21 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void perfectShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		int[] shuffled = new int[values.length];
+		int k = 0;
+		for (int j = 0; j < values.length/2; j++) {
+			shuffled[k] = values[j];
+			k = k+2;
+		}
+		k = 1;
+		for (int j = values.length/2; j < values.length; j++) {
+			shuffled[k] = values[j];
+			k = k+2;
+		}
+		// not assigning shuffled to values1 in main
+		for (int i = 0; i < values.length; i++) {
+			values[i] = shuffled[i];
+		}
 	}
 
 	/**
@@ -65,6 +86,46 @@ public class Shuffler {
 	 * @param values is an array of integers simulating cards to be shuffled.
 	 */
 	public static void selectionShuffle(int[] values) {
-		/* *** TO BE IMPLEMENTED IN ACTIVITY 3 *** */
+		Random rand = new Random();
+		for (int k = values.length-1; k >= 1; k--) {
+			int r = rand.nextInt(values.length-1);
+			int temp = values[r];
+			values[r] = values[k];
+			values[k] = temp;
+		}
+	}
+
+	public static String flip() {
+		Random rand = new Random();
+		String heads = "heads";
+		String tails = "tails";
+		int r = rand.nextInt(3);
+		if (r == 0 || r == 1) {
+			return heads;
+		}
+		return tails;
+	}
+
+	public static boolean arePermutations(int[] array1, int[] array2) {
+
+		boolean found = false;
+		for (int i = 0; i < array1.length; i++) {
+			boolean found = false;
+			for (int j = 0; j < array2.length; j++) {
+				
+				if (array1[i] == array2[j]) {
+					found = true;
+				}
+
+				// move on to the next i only if i find a match 	
+			}
+			if (!found) {
+				return false;
+			} 
+			// keep track of if you found it true or false boolean
+		}
+
+		return true;
+
 	}
 }
