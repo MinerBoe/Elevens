@@ -51,6 +51,17 @@ public class DeckTester {
 		System.out.println();
 		System.out.println();
 
-		/* *** TO BE COMPLETED IN ACTIVITY 4 *** */
+		
+		String[] ranks2 = {"ace", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king"};
+		String[] suits2 = {"hearts", "diamonds", "spades", "clubs"};
+		int[] values2 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
+
+		Deck fullDeck = new Deck(ranks2, suits2, values2);
+		System.out.println("  size: " + fullDeck.size());
+		System.out.println("Full deck shuffled:" + fullDeck.deal());
+		System.out.println("  size: " + fullDeck.size());
+		fullDeck.shuffle();
+		System.out.println("  size: " + fullDeck.size());
+		System.out.println("Full deck shuffled x2:" + fullDeck.deal());
 	}
 }
